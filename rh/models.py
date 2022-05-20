@@ -17,7 +17,7 @@ class Funcionario (models.Model):
 
 class Cargo (models.Model):
     Nome = models.CharField(max_length=150)
-    Sal_min = models.DecimalField(max_digits=8)
+    Sal_min = models.DecimalField(decimal_places=2,max_digits=8)
     Sal_max = models.DecimalField(decimal_places=2,max_digits=8)
 
 class Departamento (models.Model):
@@ -27,11 +27,11 @@ class Departamento (models.Model):
 
 class Fiscal (models.Model):
     Num_nota = models.IntegerField(max_length=20)
-    Valor = models.DecimalField(decimal_places=2, max_digits=15)
+    Valor = models.DecimalField(decimal_places=2,max_digits=15)
     Itens = models.CharField(max_length=150)
 
 class Financeiro(models.Model):
 	ID_Departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
 	ID_Fiscal = models.ForeignKey(Fiscal, on_delete=models.CASCADE)
 	Receita_despesa = models.BooleanField(max_length=1)
-	Valor = models.DecimalField(max_digits=2)
+	Valor = models.DecimalField(decimal_places=2,max_digits=2)
